@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      a=[10, 11, 12, 13, 14, 15];
+      
+      // forEach ---------------------------------------------
+      a.forEach(function(v, i){
+        console.log(v, i);
+      });
+
+      a.forEach(function(v, i){
+        console.log(v, i, this);
+      }, [1, 2]);
+
+      console.clear();
+
+      // map -------------------------------------------------
+      let answer=a.map(function(v, i){
+        return v*v;
+      });
+      console.log(answer);
+
+      let answer1=a.map(function(v, i){
+        if(v%2==0) return v;
+      });
+      console.log(answer1);
+      // 새로 생성한 배열도 기존의 배열과 길이는 무조건 같음
+      // return되지 않은 자리에는 undefined로 표기됨
+
+      console.clear();
+
+      // filter ----------------------------------------------
+      let answer2=a.filter(function(v, i){
+        return v%2==0;
+      });
+      console.log(answer2);
+      // map과는 다르게 기존의 배열과 길이가 다르게도 출력됨
+      // 원하는 값만 새로운 배열로 만들 수 있음
+
+      console.clear();
+
+      // reduce ----------------------------------------------
+      let answer3=a.reduce(function(acc, v){
+        return acc+v;
+      });
+      console.log(answer3);
+
+    </script>
+  </body>
+</html>
