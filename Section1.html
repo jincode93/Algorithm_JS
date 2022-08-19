@@ -205,6 +205,7 @@
                    let num=x.charCodeAt();
                    // 대문자 : 65 ~ 90
                    // 소문자 : 97 ~ 122
+                   // 소문자에서 32를 빼면 대문자가 됨
                    if (num>=65 && num<=90) answer++;
                 }
                 return answer;
@@ -223,6 +224,38 @@
 
             str="ItisTimeToStudy";
             console.log('12.출력: ',solution(str));
+        </script>
+        
+        <!-- 13. 대소문자 변환 -------------------------------------->
+        <script>
+            function solution(s){  
+                let answer="";
+                for (x of s){
+                    let num=x.charCodeAt();
+                    if(num>=65 && num<=90) answer+=x.toLowerCase();
+                    else answer+=x.toUpperCase();
+                }
+                return answer;
+            }
+
+            console.log('13.출력: ',solution("StuDY"));
+        </script>
+
+        <!-- 14. 가장 긴 문자열 -->
+        <script>
+            function solution(s){  
+                let answer="";
+                let num=0;
+                for (x of s) {
+                    if(x.length>num) {
+                        num=x.length;
+                        answer=x;
+                    }
+                }
+                return answer;
+            }
+            str=["teacher", "time", "student", "beautiful", "good"];
+            console.log(solution(str));
         </script>
     </body>
 </html>
