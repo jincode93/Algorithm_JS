@@ -255,7 +255,32 @@
                 return answer;
             }
             str=["teacher", "time", "student", "beautiful", "good"];
-            console.log(solution(str));
+            console.log('14.출력: ',solution(str));
         </script>
+        <!-- 15. 가운데 문자 출력 -->
+        <script>
+            function solution(s){  
+                let answer;
+                let mid = Math.floor(s.length/2);
+                if(s.length%2==0) answer = `${s[mid-1]}${s[mid]}`;
+                else answer = s[mid];
+                
+                return answer;
+            }
+            console.log('15.출력: ',solution("study"));
+        </script>
+        <!-- substr 사용 -->
+        <script>
+            function solution(s){  
+                let answer;
+                let mid = Math.floor(s.length/2);
+                if(s.length%2==0) answer=s.substr(mid-1, 2);
+                else answer = s.substr(mid, 1);
+                
+                return answer;
+            }
+            console.log('15.출력: ',solution("study"));
+        </script>
+        
     </body>
 </html>
