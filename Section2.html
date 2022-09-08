@@ -37,7 +37,7 @@
           arr=[130, 135, 148, 140, 145, 150, 150, 153];
           console.log('2.출력: ',solution(arr));
         </script>
-        <!-- 3. 가위 바위 보 -->
+        <!-- 3. 가위 바위 보 ------------------------------------>
         <script>
           function solution(a, b){         
               let answer="";
@@ -58,7 +58,7 @@
           let b=[1, 1, 2, 2, 3];
           console.log('3.출력: ',solution(a, b));
         </script>
-        <!-- 4. 점수계산 -->
+        <!-- 4. 점수계산 ------------------------------------------->
         <script>
           function solution(arr){         
               let answer=0;
@@ -102,7 +102,7 @@
           arr=[1, 0, 1, 1, 1, 0, 0, 1, 1, 0];
           console.log('4.출력: ',solution(arr));
         </script>
-        <!-- 5. 등수구하기 -->
+        <!-- 5. 등수구하기 ---------------------------------------->
         <script>
           function solution(arr){  
               let answer=[];
@@ -121,7 +121,7 @@
           arr=[87, 89, 92, 100, 76];
           console.log('5.출력: ',solution(arr));
         </script>
-        <!-- 6. 격자판 최대합 -->
+        <!-- 6. 격자판 최대합 ----------------------------------->
         <script>
           function solution(arr){  
               let answer=0;
@@ -151,6 +151,45 @@
                [19, 27, 29, 37, 27],
                [19, 13, 30, 13, 19]];
           console.log('6.출력: ',solution(arr));
+      </script>
+
+      <!-- 7. 봉우리 ------------------------------------------->
+      <script>
+        function solution(arr){  
+            let answer=0;
+            let x=[];
+            let y=[];
+            for(let i=0; i<arr.length; i++){
+              arr[i].push(0);
+              arr[i].unshift(0);
+            }
+            while(x.length<arr.length+2){
+              x.push(0);
+            }
+
+            y.push(x);
+            for(let i=0; i<arr.length; i++){
+              y.push(arr[i]);
+            }
+            y.push(x);
+
+            for(let i=1; i<y.length-1; i++){
+              for(let j=1; j<y.length-1; j++){
+                if(y[i][j]>y[i-1][j] && y[i][j]>y[i][j+1] && y[i][j]>y[i+1][j] && y[i][j]>y[i][j-1]){
+                  answer+=1;
+                }
+              }
+            } 
+            
+            return answer;
+        }
+
+            arr=[[5, 3, 7, 2, 3], 
+                [3, 7, 1, 6, 1],
+                [7, 2, 5, 3, 4],
+                [4, 3, 6, 4, 1],
+                [8, 7, 3, 5, 2]];
+        console.log("7.출력: ",solution(arr));
       </script>
     </body>
 </html>

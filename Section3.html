@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>출력결과</title>
+</head>
+<body>
+  <!-- 1. 회문 문자열 ------------------------------------------------->
+  <script>
+    function solution(s){
+        let answer="YES";
+        let long=Math.floor(s.length/2);
+        for(let i=0; i<long; i++){
+          if(s[i].toUpperCase()!==s[s.length-1-i] && s[i].toLowerCase()!==s[s.length-1-i]){
+            answer="NO";
+          }
+        }
+        return answer;
+    }
+    let str="gooG";
+    console.log("1.출력: ",solution(str));
+  </script>
+
+  <!-- 2. 유효한 팰린드롬 --------------------------------------------->
+  <script>
+    function solution(s){
+        let answer="YES";
+        for(x of s){
+          if(x.charCodeAt()<65 || 97>x.charCodeAt()>90 || x.charCodeAt()>122){
+            s = s.replace(x,'');
+          }
+        }
+        s = s.toUpperCase();
+        let long=Math.floor(s.length/2);
+        for(let i=0; i<long; i++){
+          if(s[i]!==s[s.length-1-i]){
+            answer="NO";
+          }
+        }
+        return answer;
+    }
+    
+    str="found7, time: study; Yduts; emit, 7Dnuof";
+    console.log("2.출력: ",solution(str));
+</script>
+</body>
+</html>
