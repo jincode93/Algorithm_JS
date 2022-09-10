@@ -64,7 +64,7 @@
     console.log("2.출력: ",solution(str));
   </script>
 
-  <!-- 3. 숫자만 추출 -------------------------------->
+  <!-- 3. 숫자만 추출 ------------------------------------------------->
   <script>
     function solution(s){
         let answer="";
@@ -76,6 +76,115 @@
     
     str="g0en2T0s8eSoft";
     console.log("3.출력: ",solution(str));
+  </script>
+
+  <!-- 4. 가장 짧은 문자거리 ------------------------------------------->
+  <script>
+    function solution(s, t){
+        let answer=[];
+        let a=[];
+        let b=[];
+        let count=0;
+        let leng=s.length-1;
+        for (let x of s){
+          if(x!==t){
+            count++;
+            a.push(count);
+          } else {
+            count=0;
+            a.push(count);
+          }
+        }
+        count=0;
+        for (let i=leng; i>=0; i--){
+          if(s[i]!==t){
+            count++;
+            b.unshift(count);
+          } else {
+            count=0;
+            b.unshift(count);
+          }
+        }
+        for(let j=0; j<a.length; j++){
+          if(a[j]>=b[j]) answer.push(b[j]);
+          else answer.push(a[j]);
+        }
+        return answer;
+    }
+    
+    str="teachermode";
+    console.log("4.출력: ",solution(str, 'e'));
+  </script>
+  <!-- 4. 조금 더 간략화한 방법 -->
+  <script>
+    function solution(s, t){
+        let answer=[];
+        let count=0;
+        for(let x of s){
+          if(x!==t){
+            count++;
+            answer.push(count);
+          } else {
+            count=0;
+            answer.push(count);
+          }
+        }
+        count=0;
+        for(let i=s.length-1; i>=0; i--){
+          if(s[i]!==t){
+            count++;
+            answer[i]=Math.min(answer[i], count);
+          } else count=0;
+        }
+        return answer;
+    }
+    
+    str="teachermode";
+    console.log("4.출력: ",solution(str, 'e'));
+  </script>
+
+  <!-- 5. 문자열 압축 ---------------------------------------------->
+  <script>
+    function solution(s){
+        let answer=[];
+        let count=1;
+        answer.push(s[0]);
+        for(let i=1; i<s.length; i++){
+          if(s[i]==s[i-1]){
+            count++;
+            if(count>1 && s[i]!==s[i+1]){
+              answer.push(count);
+            }
+          } else {
+            answer.push(s[i]);
+            count=1;
+          }
+        }
+        return answer.join('');
+    }
+    str="KKHSSSSSSSEE";
+    console.log("5.출력: ",solution(str));
+  </script>
+  <!-- 5. 다른 방법 -->
+  <script>
+    function solution(s){
+        let answer=[];
+        let count=1;
+        for(let i=0; i<s.length; i++){
+          if(s[i]==s[i+1]){
+            count++;
+          } else {
+            answer.push(s[i]);
+            if(count>1){
+              answer.push(count);
+            }
+            count=1;
+          }
+        }
+        return answer.join('');
+    }
+    str="KKHHSSSSSSSEEE";
+    console.log("5.출력: ",solution(str));
   </script>
 </body>
 </html>
