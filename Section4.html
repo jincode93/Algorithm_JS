@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>출력결과</title>
+</head>
+<body>
+  <!-- 1. 자릿수의 합 ----------------------------------------------------->
+  <script>
+    function solution(n, arr){
+        let answer, max=0;
+        for(x of arr){
+          let sum=0, y=x;
+          while(y){
+            sum+=(y%10);
+            y=Math.floor(y/10);
+          }
+          if(sum>max){
+            max=sum;
+            answer=x;
+          } else if(sum==max){
+            if(x>answer) answer=x;
+          }
+        }
+        return answer;
+    }
+    
+    let arr=[128, 460, 603, 40, 521, 137, 123];
+    console.log("1.출력: ",solution(7, arr));
+  </script>
+  <!-- 1.내장함수 사용 -->
+  <script>
+    function solution(n, arr){
+        let answer, max=0;
+        for(x of arr){
+          let sum=x.toString().split('').reduce((a, b)=>a+Number(b), 0);
+          if(sum>max){
+            max=sum;
+            answer=x;
+          } else if(sum==max){
+            if(x>answer) answer=x;
+          }
+        }
+        return answer;
+    }
+    
+    arr=[128, 460, 603, 40, 521, 137, 123];
+    console.log("1.출력: ",solution(7, arr));
+  </script>
+
+  <!-- 2. 뒤집은 소수 ------------------------------------------------------>
+  <script>
+    function solution(arr){
+        let answer=[];
+        let re=[];
+        for(let x of arr){
+          let y=Number(x.toString().split('').reverse().join(''));
+          if(y==2){
+            answer.push(y);
+          }
+          let ok=false;
+          for(let i=2; i<y; i++){
+            if(y%i!==0) ok=true;
+            else{
+            ok=false;
+            break;
+            }
+          }
+          if(ok==true) answer.push(y);
+        }
+        return answer;
+    }
+
+    arr=[32, 55, 62, 20, 250, 370, 200, 30, 100];
+    console.log("2.출력: ",solution(arr));
+</script>
+</body>
+</html>
